@@ -154,11 +154,11 @@
           }
         ],
         "UpstreamPathTemplate": "/ShoppingCartApi/UpdateShoppingCartAsync",
-        "UpstreamHttpMethod": ["POST"]
+        "UpstreamHttpMethod": ["GET","POST","PUT"]
       }
     ],
     "GlobalConfiguration": {
-      "BaseUrl": "http://catalog.api:5010"
+      "BaseUrl": "http://localhost:5010"
     }
   }
   

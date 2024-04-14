@@ -33,7 +33,6 @@ namespace Basket.Api.Repositories
         public async Task<ShoppingCart> UpdateShoppingCartAsync(ShoppingCart basket)
         {
             await _redisCache.SetStringAsync(basket.UserName, JsonConvert.SerializeObject(basket));
-            
             return await GetShoppingCartAsync(basket.UserName);
         }
 

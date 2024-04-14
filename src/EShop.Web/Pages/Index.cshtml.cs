@@ -1,4 +1,5 @@
-﻿using EShop.Web.Models.Catalog;
+﻿using Basket.Api.Entities;
+using EShop.Web.Models.Catalog;
 using EShop.Web.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -21,11 +22,29 @@ public class IndexModel : PageModel
     }
     public IEnumerable<CatalogItemModel> ProductList { get; set; } = new List<CatalogItemModel>();
     public IEnumerable<CatalogTypeModel> CategoryList { get; set; } = new List<CatalogTypeModel>();
+    public async Task<IActionResult> OnPostAddToCartAsync(int productId)
+    {
+        _logger.LogInformation("productId" + productId);
+        var product = await _catalogService.GetCatalog(productId);
+        var userName = User.Identity!.Name!;
+        var basket = await _basketService.GetBasket(userName);
+        basket.Items.Add(new ShoppingCartItemsModel
+        {
+            ProductId = product.Id,
+            ProductName = product.Name,
+            Quantity = 1,
+            Price = product.Price,
+            Color = "Black"
 
+        });
+        await _basketService.UpdateBasket(basket);
+        return RedirectToPage("Cart");
+    }
     public async Task<IActionResult> OnGetAsync()
     {
         ProductList = await _catalogService.GetCatalog();
         CategoryList = await _catalogService.GetCategories();
+
         
         
         return Page();

@@ -2,6 +2,8 @@
 using Basket.Api.Entities;
 using EShop.Web.Services;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
+
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace EShop.Web.Pages
@@ -10,20 +12,17 @@ namespace EShop.Web.Pages
     {
         private readonly ILogger<Basket> _logger;
         private readonly IBasketService _basketService;
+        public string UserName { get; set; } = null!;
+
         public Basket(ILogger<Basket> logger, IBasketService basketService)
         {
             _logger = logger;
             _basketService = basketService;
         }
+
         public ShoppingCartModel Cart { get; set; } = new ShoppingCartModel();
 
-         public async Task<IActionResult> OnGetAsync()
-        {
-            var userName = User.Identity!.Name!;
+        
 
-            Cart = await _basketService.GetBasket(userName);
-
-            return Page();
-        }
     }
 }

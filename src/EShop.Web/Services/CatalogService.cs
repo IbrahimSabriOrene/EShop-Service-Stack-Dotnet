@@ -6,15 +6,18 @@ using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 using EShop.Web.Models.Catalog;
+using EShop.Web.Pages;
 
 namespace EShop.Web.Services
 {
     public class CatalogService : ICatalogService
     {
         private readonly HttpClient _client;
+        private readonly ILogger<CatalogService> _logger;
         public CatalogService(HttpClient client, ILogger<CatalogService> logger)
         {
             _client = client ?? throw new ArgumentNullException(nameof(client));
+            _logger = logger ?? throw new ArgumentNullException(nameof(logger));
         }
 
         public async Task CreateCatalog(CatalogItemModel model)
@@ -84,10 +87,27 @@ namespace EShop.Web.Services
 
         }
 
-        public async Task<CatalogItemModel> GetCatalog(string id)
+
+// Id part should be userName
+        public async Task<CatalogItemModel> GetCatalog(int id)
         {
-            await Task.CompletedTask;
-            throw new NotImplementedException();
+            _logger.LogInformation("CatalogService: GetCatalog: " + id);
+           var response = await _client.GetAsync($"/api/products/{id}");
+           _logger.LogInformation("CatalogService: GetCatalog: " + response);
+            if (response != null && response.IsSuccessStatusCode)
+            {
+                var content = await response.Content.ReadFromJsonAsync<CatalogItemModel>();
+                _logger.LogInformation("CatalogService: GetCatalog: " + content);
+                return content ?? throw new Exception("The response content is empty after updating the catalog.");
+            }
+            else
+            {
+                var errorMessage = response != null
+                    ? $"Error calling API. Status Code: {response.StatusCode}, Reason: {response.ReasonPhrase}"
+                    : "Error calling API. The response is null.";
+
+                throw new Exception(errorMessage);
+            }
         }
 
         public Task<IEnumerable<CatalogItemModel>> GetCatalogByCategory(string category)

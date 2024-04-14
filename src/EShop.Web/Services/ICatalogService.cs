@@ -14,7 +14,7 @@ namespace EShop.Web.Services
         Task<IEnumerable<CatalogTypeModel>> GetCategories();
         Task<IEnumerable<CatalogBrandModel>> GetBrands();
 
-        Task<CatalogItemModel> GetCatalog(string id);
+        Task<CatalogItemModel> GetCatalog(int id);
         Task <IEnumerable<CatalogTypeModel>> GetType(int id);
         Task CreateCatalog(CatalogItemModel model);
         Task<CatalogItemModel> CreateBrand(CatalogBrandModel model);

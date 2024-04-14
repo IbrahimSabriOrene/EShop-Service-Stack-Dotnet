@@ -22,6 +22,12 @@ services:
       context: .
       dockerfile: Catalog.Api/Dockerfile
 
+  eShop.web:  
+    image: ${DOCKER_REGISTRY-}eshopweb
+    build:
+      context: .
+      dockerfile: Eshop.Web/Dockerfile
+
   basket.api:
     image: ${DOCKER_REGISTRY-}basketapi
     build:
@@ -54,3 +60,4 @@ volumes:
   postgres_data:
   pgadmin_data:
   elasticsearch-data:
+  

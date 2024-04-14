@@ -3,3 +3,13 @@
 
 // Write your JavaScript code.
 
+function addToCart() {
+    // Get the productId from the hidden input
+    var productId = document.getElementById("productId").value;
+    // Perform any additional checks or operations if needed
+    // Submit the form as post
+    
+    document.getElementById("add_cart_form").submit();
+
+
+}

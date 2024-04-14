@@ -28,6 +28,7 @@ namespace Basket.Api.Controllers
         }
 
         [HttpPost("UpdateShoppingCartAsync")]
+        
         public async Task<IActionResult> UpdateShoppingCartAsync(ShoppingCart cart)
         {
             var basket = await _cart.UpdateShoppingCartAsync(cart);
