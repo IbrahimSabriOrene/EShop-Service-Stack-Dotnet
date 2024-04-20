@@ -1,11 +1,54 @@
+
+
+
+
+Re-design entire frontend
+
+Pages:
+
+- index
+- cart
+- product page
+- profile page
+
 Current Goal:
 
 --Complete Cart System.
 
+--Make separate page for add to card.
+
+-- On Click item, get the product details page. 
+
+-- Make it as a link. On click the id of product will  be sent to the page.
+
+https://localhost:7118/ProductDetails?id=64 
+
+get item's product id and send it by that.
+
+On click the pitcure will appear on big screen. Make pitcures list of images and remove imageurls from backend.
+
+-- Profile Page
+
+Total Purchases, last purchases etc etc.
+
+
+-- Make small cart part for the index page. 
+
+Have these:
+products - quantity - x(cancel button)
+
+total products etc. 
+
+go to the cart. 
+
+buy now will be on the same page.
+
 ---
-> On Click Add To Cart, it will send to the cart system the item.
-> GetUserName by User.Identity
+
+> On Click Add To Cart, it will send  the item to the cart system.
+> GetU	serName by User.Identity
 > Get Other Values by Product.etc
+
 ---
 
 --Now i have to connect add to cart to the redis database. - Done
@@ -28,17 +71,17 @@ Current Goal:
 
 --> Add Remove Product
 
+New Idea, get the image url based on ProductId
+
 --**Complete Payment System.**
 
------  Search The Payment Systems 
-
+-----  Search The Payment Systems
 
 Some New Features to add
 
 E-Mail System.
 
 Normal Authorization
-
 
 - Rate Limiting
 - Logging. Add Structured Logging for All Services

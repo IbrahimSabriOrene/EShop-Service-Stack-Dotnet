@@ -35,5 +35,12 @@ namespace Basket.Api.Controllers
             return Ok(basket);
         }
 
+        [HttpDelete("DeleteShoppingCartAsync/{userName}")]
+        public async Task<IActionResult> DeleteShoppingCartAsync(string userName)
+        {
+            await _cart.DeleteShoppingCartAsync(userName);
+            return Ok();
+        }
+
     }
 }

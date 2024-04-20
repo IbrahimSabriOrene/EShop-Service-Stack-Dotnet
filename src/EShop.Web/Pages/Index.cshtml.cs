@@ -28,25 +28,36 @@ public class IndexModel : PageModel
         var product = await _catalogService.GetCatalog(productId);
         var userName = User.Identity!.Name!;
         var basket = await _basketService.GetBasket(userName);
+        var quality = 1;
+       
+            var item = basket.Items.FirstOrDefault(x => x.ProductId == productId);
+            if (item != null)
+            {
+                item.Quantity += quality;
+            }
+        if (basket.UserName == null)
+        {
+            basket = new ShoppingCartModel
+            {
+                UserName = userName
+            };
+        }
         basket.Items.Add(new ShoppingCartItemsModel
         {
             ProductId = product.Id,
             ProductName = product.Name,
-            Quantity = 1,
+            Quantity = quality, // Quantity is chosen by the user. Get it from the form.
             Price = product.Price,
-            Color = "Black"
+            ImageFile = product.ImageFile
 
         });
         await _basketService.UpdateBasket(basket);
-        return RedirectToPage("Cart");
+        return RedirectToPage();
     }
     public async Task<IActionResult> OnGetAsync()
     {
         ProductList = await _catalogService.GetCatalog();
         CategoryList = await _catalogService.GetCategories();
-
-        
-        
         return Page();
     }
 }

@@ -1,3 +1,4 @@
+using System.Formats.Asn1;
 using Basket.Api.Entities;
 using Basket.Api.Repositories;
 
@@ -44,6 +45,19 @@ namespace Basket.Api.Services
             }
 
 
+        }
+
+        public async Task DeleteShoppingCartAsync(string userName)
+        {
+            try
+            {
+                await _shoppingCartRepository.DeleteShoppingCartAsync(userName);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error while deleting shopping cart {userId}", userName);
+                throw;
+            }
         }
     }
 }

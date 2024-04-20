@@ -36,6 +36,11 @@ namespace Basket.Api.Repositories
             return await GetShoppingCartAsync(basket.UserName);
         }
 
+        public async Task DeleteShoppingCartAsync(string userName)
+        {
+            await _redisCache.RemoveAsync(userName);
+        }
+
 
 
     }

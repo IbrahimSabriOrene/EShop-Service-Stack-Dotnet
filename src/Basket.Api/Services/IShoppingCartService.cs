@@ -6,5 +6,6 @@ namespace Basket.Api.Services
     {
         Task<ShoppingCart> GetShoppingCartAsync(string userName);
         Task<ShoppingCart> UpdateShoppingCartAsync(ShoppingCart shoppingCart);
+        Task DeleteShoppingCartAsync(string userName);
     }
 }
