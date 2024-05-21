@@ -22,7 +22,7 @@ namespace Logger
                     .WriteTo.Debug()
                     .WriteTo.Console()
                     .WriteTo.Elasticsearch(
-                        new ElasticsearchSinkOptions(new Uri(elasticUri))
+                        new ElasticsearchSinkOptions(new Uri(elasticUri!))
                         {
                             IndexFormat = $"applogs-{context.HostingEnvironment.ApplicationName?.ToLower().Replace(".", "-")}-{context.HostingEnvironment.EnvironmentName?.ToLower().Replace(".", "-")}-{DateTime.UtcNow:yyyy-MM}",
                             AutoRegisterTemplate = true,
