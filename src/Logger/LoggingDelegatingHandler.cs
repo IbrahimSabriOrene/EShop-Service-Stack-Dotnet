@@ -26,12 +26,12 @@ namespace Common.Logging
 
                 if (response.IsSuccessStatusCode)
                 {
-                    logger.LogInformation("Received a success response from {Url}", response.RequestMessage.RequestUri);
+                    logger.LogInformation("Received a success response from {Url}", response.RequestMessage!.RequestUri);
                 }
                 else
                 {
                     logger.LogWarning("Received a non-success status code {StatusCode} from {Url}",
-                        (int)response.StatusCode, response.RequestMessage.RequestUri);
+                        (int)response.StatusCode, response.RequestMessage!.RequestUri);
                 }
 
                 return response;
@@ -39,7 +39,7 @@ namespace Common.Logging
             catch (HttpRequestException ex) 
                 when (ex.InnerException is SocketException se && se.SocketErrorCode == SocketError.ConnectionRefused)
             {
-                var hostWithPort = request.RequestUri.IsDefaultPort
+                var hostWithPort = !request.RequestUri!.IsDefaultPort
                     ? request.RequestUri.DnsSafeHost
                     : $"{request.RequestUri.DnsSafeHost}:{request.RequestUri.Port}";
 
