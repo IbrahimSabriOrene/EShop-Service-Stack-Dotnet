@@ -1,8 +1,11 @@
-
-
-
+-- Important:
+--  Re -Design basket api. If a product already in that database, just increase the quantity.
 
 Re-design entire frontend
+
+Change CatalogRepository based on this design:
+
+![1714080685674](image/Todo.general/1714080685674.png)
 
 Pages:
 
@@ -17,11 +20,11 @@ Current Goal:
 
 --Make separate page for add to card.
 
--- On Click item, get the product details page. 
+-- On Click item, get the product details page.
 
 -- Make it as a link. On click the id of product will  be sent to the page.
 
-https://localhost:7118/ProductDetails?id=64 
+https://localhost:7118/ProductDetails?id=64
 
 get item's product id and send it by that.
 
@@ -31,15 +34,14 @@ On click the pitcure will appear on big screen. Make pitcures list of images and
 
 Total Purchases, last purchases etc etc.
 
-
--- Make small cart part for the index page. 
+-- Make small cart part for the index page.
 
 Have these:
 products - quantity - x(cancel button)
 
-total products etc. 
+total products etc.
 
-go to the cart. 
+go to the cart.
 
 buy now will be on the same page.
 
