@@ -20,6 +20,7 @@ namespace EShop.Web.Pages
         public async Task<IActionResult> OnGetAsync()
         {
             var userName = User.Identity!.Name!;
+
             CartModel = await _basketService.GetBasket(userName);
             return Page();
         }
@@ -29,7 +30,14 @@ namespace EShop.Web.Pages
             var userName = User.Identity!.Name!;
             var basket = await _basketService.GetBasket(userName);
             var item = basket.Items.Single(x => x.ProductId == productId);
-            basket.Items.Remove(item);
+            if(item.Quantity > 1)
+            {
+                item.Quantity--;
+            }
+            else
+            {
+                basket.Items.Remove(item);
+            }
             await _basketService.UpdateBasket(basket);
             return RedirectToPage();
         }

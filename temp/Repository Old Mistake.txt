@@ -1,0 +1,96 @@
+ //// delete this part
+        /* 
+        private enum CatalogQuery
+        {
+            GetAllCatalogItems,
+            GetCatalogItemById,
+            GetCatalogItemsByBrand,
+            GetCatalogItemsByType,
+            GetCatalogBrands,
+            GetCatalogBrand,
+            CreateCatalogBrand,
+            GetCatalogTypes,
+            CreateCatalogType,
+            GetCatalogType,
+            UpdateCatalogType,
+            CreateCatalogItem,
+            UpdateCatalogItem,
+            DeleteCatalogItem,
+            GetCatalogItemsByTypeAndBrandId,
+            GetCatalogItemByName,
+            GetCatalogItemByIds,
+            UpdateCatalogBrand
+        }
+        
+        // delete this part
+        private static string GetQuery(CatalogQuery catalogQuery)
+        {
+            var sql = new StringBuilder();
+
+           switch (catalogQuery)
+            {
+                case CatalogQuery.GetAllCatalogItems:
+                    sql.Append("SELECT * FROM CatalogItem");
+                    break;
+                case CatalogQuery.GetCatalogItemById:
+                    sql.Append("SELECT * FROM CatalogItem WHERE Id = @id");
+                    break;
+                case CatalogQuery.GetCatalogItemByIds:
+                    sql.Append("SELECT * FROM CatalogItem WHERE Id = ANY(@ids)");
+                    break;
+
+                case CatalogQuery.CreateCatalogBrand:
+                    sql.Append("INSERT INTO CatalogBrand (Brand) VALUES (@Brand)");
+                    break;
+                case CatalogQuery.GetCatalogItemsByBrand:
+                    sql.Append("SELECT * FROM CatalogItem WHERE CatalogBrandId = @brandId");
+                    break;
+                case CatalogQuery.GetCatalogItemsByType:
+                    sql.Append("SELECT * FROM CatalogItem WHERE CatalogTypeId = @typeId");
+                    break;
+                case CatalogQuery.GetCatalogBrands:
+                    sql.Append("SELECT * FROM CatalogBrand");
+                    break;
+                case CatalogQuery.GetCatalogBrand:
+                    sql.Append("SELECT * FROM CatalogBrand WHERE Id = @id");
+                    break;
+                case CatalogQuery.UpdateCatalogBrand:
+                    sql.Append("UPDATE CatalogBrand SET Brand = @Brand WHERE Id = @Id");
+                    break;
+                case CatalogQuery.GetCatalogTypes:
+                    sql.Append("SELECT * FROM CatalogType");
+                    break;
+                case CatalogQuery.CreateCatalogType:
+                    sql.Append("INSERT INTO CatalogType (Type) VALUES (@Type)");
+                    break;
+                case CatalogQuery.GetCatalogType:
+                    sql.Append("SELECT * FROM CatalogType WHERE Id = @id");
+                    break;
+                case CatalogQuery.UpdateCatalogType:
+                    sql.Append("UPDATE CatalogType SET Type = @Type WHERE Id = @Id");
+                    break;
+                case CatalogQuery.DeleteCatalogItem:
+                    sql.Append("DELETE FROM CatalogItem WHERE Id = @id");
+                    break;
+                case CatalogQuery.UpdateCatalogItem:
+                    sql.Append("UPDATE CatalogItem SET Name = @Name, Description = @Description, Price = @Price, ImageFile = @ImageFile, CatalogTypeId = @CatalogTypeId, CatalogBrandId = @CatalogBrandId WHERE Id = @Id");
+                    break;
+                case CatalogQuery.CreateCatalogItem:
+                    sql.Append(@"INSERT INTO CatalogItem (Name, Description, Price, ImageFile, CatalogTypeId, CatalogBrandId)
+                     VALUES (@Name, @Description, @Price, @ImageFile, @CatalogTypeId, @CatalogBrandId) RETURNING Id");
+                    break;
+                case CatalogQuery.GetCatalogItemsByTypeAndBrandId:
+                    sql.Append("SELECT * FROM CatalogItem WHERE CatalogTypeId = @typeId AND CatalogBrandId = @brandId");
+                    break;
+                case CatalogQuery.GetCatalogItemByName:
+                    sql.Append("SELECT * FROM CatalogItem WHERE Name = @name");
+                    break;
+
+
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(catalogQuery), catalogQuery, null);
+            }
+
+            return sql.ToString();
+        }
+              */

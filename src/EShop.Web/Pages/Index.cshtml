@@ -34,10 +34,16 @@
                 </div>
                 <!-- Move this part to product details-->
                 <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                    <!--
                     <form asp-page-handler="AddToCart" name="addToCartForm" id="add_cart_form" method="post">
+                         <!-- Move add to cart from here to product details
+                         
                         <input type="hidden" name="ProductId" value="@product.Id" />
-                        <button type="submit" class="btn btn-dark mt-auto" style="width: 100%;">Add to cart</button>    
+                        <button type="submit" class="btn btn-dark mt-auto" style="width: 100%;">Add to cart</button>
                     </form>
+                     -->    
+                    <a class="btn btn-dark mt-auto" asp-area="@product.Description" asp-route-productId="@product.Id"     asp-page="/ProductDetails">Explore</a>
+
                 </div>
 
 
