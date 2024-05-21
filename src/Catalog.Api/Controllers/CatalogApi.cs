@@ -93,7 +93,7 @@ public static class CatalogApi
         try
         {
             var brand = await services.Repository.GetCatalogType(id) ?? throw new KeyNotFoundException();// Change this to logger
-            await services.Repository.DeleteCatalogItem(id);
+            await services.Repository.DeleteCatalogItem(id); // Fix this and make it delete catalog type
             return "Deleted type with id: " + id;
         }
         catch (Exception ex)
